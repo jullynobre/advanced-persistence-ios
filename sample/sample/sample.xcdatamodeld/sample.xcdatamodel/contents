@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Course" representedClassName="Course" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="disciplines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Discipline" syncable="YES"/>
+    </entity>
+    <entity name="Department" representedClassName="Department" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" syncable="YES"/>
+        <relationship name="teachers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Teacher" syncable="YES"/>
+    </entity>
+    <entity name="Discipline" representedClassName="Discipline" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schedule" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TestGrade" syncable="YES"/>
+        <relationship name="students" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="disciplines" inverseEntity="Student" syncable="YES"/>
+        <relationship name="teachers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="disciplines" inverseEntity="Teacher" syncable="YES"/>
+    </entity>
+    <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class">
+        <attribute name="ira" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="registrationNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="disciplines" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Discipline" inverseName="students" inverseEntity="Discipline" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TestGrade" syncable="YES"/>
+    </entity>
+    <entity name="Teacher" representedClassName="Teacher" syncable="YES" codeGenerationType="class">
+        <attribute name="ciap" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="disciplines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Discipline" inverseName="teachers" inverseEntity="Discipline" syncable="YES"/>
+    </entity>
+    <entity name="TestGrade" representedClassName="TestGrade" syncable="YES" codeGenerationType="class">
+        <attribute name="final" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="p1" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="p2" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="University" representedClassName="University" syncable="YES" codeGenerationType="class">
+        <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="departments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Department" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="University" positionX="-387" positionY="-252" width="128" height="88"/>
+        <element name="Department" positionX="-9" positionY="-225" width="128" height="103"/>
+        <element name="Teacher" positionX="-360" positionY="-126" width="128" height="103"/>
+        <element name="Course" positionX="45" positionY="-72" width="128" height="73"/>
+        <element name="Discipline" positionX="-162" positionY="-49" width="126" height="103"/>
+        <element name="Student" positionX="61" positionY="113" width="128" height="118"/>
+        <element name="TestGrade" positionX="-146" positionY="144" width="128" height="90"/>
+    </elements>
+</model>
